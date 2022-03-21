@@ -76,12 +76,12 @@ body {
           justify-content: flex-end;
 }
 
-.search .gsc-clear-button {
-  display: none;
-}
-
 .search {
   margin-right: 10%;
+}
+
+.search .gsc-clear-button {
+  display: none;
 }
 
 .items {

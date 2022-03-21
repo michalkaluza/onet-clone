@@ -72,14 +72,15 @@ body {
 }
 
 .search {
+    margin-right: 10%;
+
+    .gcse-search {
+        // width: 500px;
+    }
     .gsc-clear-button {
         display: none;
 
     }
-}
-
-.search {
-    margin-right: 10%;
 }
 
 
