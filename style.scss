@@ -11,7 +11,6 @@ html {
 
 a {
     text-decoration: none;
-    color: black;
 }
 
 ul {
@@ -22,7 +21,11 @@ $onieColor: #ffb600;
 $fixedHeaderHeight: 11vh;
 $websiteWidth: 1268px;
 $borderBottom: 1px solid rgb(209, 209, 209);
+$borderOrange: 5px solid $onieColor;
 $warArticlesRed: rgb(221, 3, 3);
+$marginBetweenSections: 2vh;
+$sectionHeaderHeight: 4vh;
+$sectionHeaderFZ: 18px;
 
 body {
     height: 1000vh;
@@ -41,6 +44,12 @@ body {
     overflow: hidden;
     background-color: white;
     border-bottom: 1px solid rgb(209, 209, 209);
+    z-index: 1;
+    transition: 500ms ease;
+
+    * {
+        color: black;
+    }
 }
 
 .fixedHeaderWrap {
@@ -48,20 +57,22 @@ body {
     justify-content: space-between;
     align-items: center;
     width: $websiteWidth;
-    height: 100%;
+    height: $fixedHeaderHeight;
     margin: 0 auto;
     overflow: hidden;
+    transition: 500ms ease;
 }
 
 .logo {
     height: 100%;
-    position: avsolute;
+    position: relative;
 
     img {
         position: absolute;
         top: 50%;
         height: 65%;
         transform: translateY(-50%);
+        transition: 500ms ease;
     }
 }
 
@@ -69,14 +80,12 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    align-items: center;
 }
 
 .search {
     margin-right: 10%;
 
-    .gcse-search {
-        // width: 500px;
-    }
     .gsc-clear-button {
         display: none;
 
@@ -92,16 +101,24 @@ body {
     ul {
         display: flex;
         flex-direction: row;
+        align-items: center;
 
         li {
-            display: block;
             margin-right: 15px;
 
-            i {
-                display: inline;
-                margin-right: 5px;
-                font-size: 20px;
-                vertical-align: -2px;
+            a {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                i {
+                    margin-right: 5px;
+                    font-size: 20px;
+                    vertical-align: -2px;
+                }
+
+
+
             }
 
             .fa-envelope {
@@ -113,6 +130,46 @@ body {
         }
     }
 }
+
+// //.................fixedHeader on scroll
+
+.fixedHeaderScroll {
+    height: 7vh;
+}
+
+.fixedHeaderWrapScroll {
+    height: 7vh;
+}
+
+.logo {
+    img.imgScroll {
+        height: 90%;
+    }
+}
+
+
+.items {
+    
+
+    ul {
+        li.liScroll {
+            margin-left: 15px;
+            a {
+                p.pScroll {
+                    display: none;
+                }
+            }
+
+            .fa-envelope {
+                border: 16px solid $onieColor;
+                border-radius: 50%;
+                background-color: $onieColor;
+                margin-right: -8px;
+            }
+        }
+    }
+}
+
 
 //...............mainNav
 
@@ -139,6 +196,7 @@ body {
                     font-size: 42px;
                     line-height: 22px;
                     padding-top: 0;
+
                 }
             }
 
@@ -147,7 +205,7 @@ body {
                 padding: 14px 20px;
                 font-size: 14px;
                 font-weight: 700;
-
+                color: black;
             }
 
 
@@ -165,7 +223,7 @@ body {
 .weatherWidgets {
     display: flex;
     flex-direction: row;
-    margin: 2vh auto 0;
+    margin: $marginBetweenSections auto 0;
     width: $websiteWidth;
     border: $borderBottom;
     padding: 20px;
@@ -196,20 +254,14 @@ body {
     }
 }
 
+// ....................war
 
 
-.gridLayout {
-    width: $websiteWidth;
-    margin: 0 auto;
-    display: grid;
-    grid-template-rows: minmax(100px, 50%);
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 30px;
-}
+
 
 .warHeader {
     position: relative;
-    height: 4vh;
+    height: $sectionHeaderHeight;
     margin-bottom: 1vh;
     overflow: hidden;
 
@@ -229,7 +281,7 @@ body {
         }
 
         p {
-            font-size: 18px;
+            font-size: $sectionHeaderFZ;
             margin-left: -20px;
             line-height: 3vh;
             font-weight: bold;
@@ -324,21 +376,257 @@ body {
 
 }
 
+.gridLayout {
+    width: $websiteWidth;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+
+}
+
 .war {
-    margin-top: 2vh;
-    height: 100vh;
+    width: $websiteWidth;
+    margin: $marginBetweenSections auto 0;
+}
+
+.redArticles {
+
+    background-color: $warArticlesRed;
+    padding: 10px;
+    min-height: 70vh;
+}
+
+.redItem1 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    background-color: black;
+    // height: 10vh;
+}
+
+.bigArticle {
+    height: 100%;
+}
+
+
+.bigArticlePhoto {
+    height: 80%;
+    color: white;
+    position: relative;
+    background-image: url(./img/ukr.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.title {
+    position: absolute;
+    bottom: 10%;
+    font-size: 24px;
+    padding-left: 20px;
+    border-left: 5px solid $onieColor;
+    font-weight: 900;
+
+}
+
+
+
+
+.bigArticleMenu {
+    height: 20%;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: 14px;
+    font-weight: 700;
+
+
+
+
+    a {
+        height: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        color: black;
+    }
+
+    a:hover {
+        box-shadow: inset 0px -30px 0px -25px $onieColor;
+    }
+}
+
+
+
+.smallArticle {
+    height: 100%;
+    // width: 100%;
+
+    p {
+        margin-top: 10px;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+    }
+}
+
+.smallArticlePhoto {
+    position: relative;
+    height: 70%;
+    background-image: url(./img/ukr.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.yellowBox {
+    background-color: $onieColor;
+    color: black;
+    font-size: 12px;
+    font-weight: 700;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 4px;
+}
+
+// ........................main
+
+// gridLayout2 settings
+
+.gridLayout2 {
+    margin-top: $marginBetweenSections;
     width: $websiteWidth;
     margin: 2vh auto 0;
+    display: grid;
+    grid-template-areas:
+        'header header header newsHeader'
+        'item1 item2 item3 sideArticles'
+        'header2 header2 header2 sideArticles'
+        'bigArticle bigArticle . sideArticles';
 
-    .redArticles {
+    grid-template-rows: $sectionHeaderHeight auto $sectionHeaderHeight auto;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
 
-        background-color: $warArticlesRed;
 
-        .redItem1 {
-            grid-column-start: 1;
-            grid-column-end: 3;
-            background-color: black;
-            height: 10vh;
+    .rewolucjaWPodatkach {
+        grid-area: header;
+    }
+
+    .wiadomosci {
+        grid-area: newsHeader;
+    }
+
+    .item1 {
+        grid-area: item1;
+    }
+
+    .item2 {
+        grid-area: item2;
+    }
+
+    .item3 {
+        grid-area: item3;
+    }
+
+    .sideArticles {
+        grid-area: sideArticles;
+    }
+
+    .wybraneDlaCiebie {
+        grid-area: header2;
+    }
+
+    .bigArticle {
+        grid-area: bigArticle;
+    }
+
+
+
+}
+
+// gridLayout2 style settings
+
+.gridLayout2 {
+
+    .smallArticle {
+        p {
+            color: black;
         }
+    }
+
+    .smallArticlePhoto {
+        height: 20vh;
+    }
+
+    .bigArticlePhoto {
+        height: 30vh;
+        color: white;
+    }
+
+    .header {
+        height: $sectionHeaderHeight;
+        display: flex;
+        border-bottom: $borderBottom;
+    }
+}
+
+// main elements style settings
+
+.headerP {
+    font-size: $sectionHeaderFZ;
+    font-weight: bold;
+    line-height: calc(0.8 * #{$sectionHeaderHeight});
+    margin-left: calc(-0.5 * #{$sectionHeaderHeight});
+
+}
+
+.yellowDot {
+    height: calc(0.8 * #{$sectionHeaderHeight});
+    width: calc(0.8 * #{$sectionHeaderHeight});
+    border-radius: 50%;
+    background-color: $onieColor;
+}
+
+.sideArticles {
+
+    font-size: 14px;
+
+
+    .item1 a {
+        display: flex;
+        margin: 10px 5px;
+
+        img {
+            width: 30%;
+            margin-right: 10px;
+        }
+
+    }
+
+    .item2 {
+
+        .yellowBox {
+            position: static;
+            margin-right: 10px;
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    li {
+        border-top: $borderBottom;
+    }
+
+    a {
+        display: inline-block;
+        margin: 5px;
+        color: rgb(83, 83, 83);
     }
 }
